@@ -4,6 +4,7 @@ let turnO  = true;
 let newGameBtn = document.querySelector("#new-btn");
 let msgContainer  = document.querySelector(".msg-container");
 let message = document.querySelector("#msg");
+let count  =0;
 const winPattern = [
     [0,1,2],
     [0,3,6],
@@ -19,16 +20,27 @@ boxes.forEach((box)=>{
        
         if (turnO){
             box.innerHTML="O"
+            box.style.color="yellow"
             turnO = false;
         }
         else{
             box.innerHTML="X"
+            box.style.color="orange"
             turnO = true;
         }
         box.disabled = true;
-        checkWiner();
+        count++;
+        let isWinner = checkWiner();
+        if(count===9 && ! isWinner){
+            gameDraw();
+        }
     })
 });
+const gameDraw = ()=>{
+    msg.innerHTML = `Opps Game was a Draw.`;
+    msgContainer.classList.remove('hide');
+    disabledBoxes();
+}
 const disabledBoxes = ()=>{
     for (let box of boxes){
         box.disabled = true;
@@ -61,6 +73,7 @@ const checkWiner = ()=>{
 };
 const resetGame = ()=>{
     turn0 = true;
+    count=0;
     EnabledBoxes();
     msgContainer.classList.add("hide");
 }

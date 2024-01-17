@@ -48,6 +48,8 @@ body{
     color: white;
     border-radius: 1rem;
     border: none;
+    margin-bottom: 30px;
+    margin-top: 20px;
 }
 #msg{
     color: rgb(255, 255, 255);
@@ -56,6 +58,7 @@ body{
 }
 #msg-contianer{
     height: 30vmin;
+    margin-bottom: px;
 }
 .hide{
     display: none;
